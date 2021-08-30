@@ -1,69 +1,25 @@
 import express from "express";
-import { v4 as uuidv4 } from "uuid";
+import {
+  createUser,
+  deleteById,
+  getUser,
+  getUserById,
+  updateUserWithId,
+} from "../controllers/users.js";
 
 const router = express.Router();
 
-let users = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-  },
-  {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: 24,
-  },
-];
+let users = [];
 
 /* /users is common routes for all enpoints */
-router.get("/", (req, res) => {
-  res.send(users);
-});
+router.get("/", getUser);
 
-router.post("/", (req, res) => {
-  const user = req.body;
+router.post("/", createUser);
 
-  users.push({ ...user, id: uuidv4() });
+router.get("/:id", getUserById);
 
-  res.send(`User with the name ${user.firsName} added to the database`);
-});
+router.delete("/:id", deleteById);
 
-router.get("/:id", (req, res) => {
-  const { id } = req.params;
-
-  const foundUser = user.find((user) => user.id === id);
-
-  res.send(foundUser);
-});
-
-router.delete("/:id", (req, res) => {
-  const { id } = req.params;
-
-  users = users.filter((person) => person.id !== id);
-
-  res.send(`User with the id ${id} deleted from the database.`);
-});
-
-router.patch("/:id", (req, res) => {
-  const { id } = req.params;
-  const { firstName, lastName, age } = req.body;
-
-  const userToBeUpdated = users.find((user) => user.id === id);
-
-  if (firstName) {
-    user.firstName = firstName;
-  }
-
-  if (lastName) {
-    user.lastName = lastName;
-  }
-
-  if (age) {
-    user.age = age;
-  }
-
-  res.send(`User with the id ${id} has been updated`);
-});
+router.patch("/:id", updateUserWithId);
 
 export default router;
