@@ -24,7 +24,9 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const user = req.body;
 
-  users.push(user);
+  const userWithId = { ...user, id: uuidv4() };
+
+  users.push(userWithId);
 
   res.send(`User with the name ${user.firsName} added to the database`);
 });
