@@ -2,7 +2,7 @@ import express from "express";
 import {
   createUser,
   deleteById,
-  getUser,
+  getUsers,
   getUserById,
   updateUserWithId,
 } from "../controllers/users.js";
@@ -12,7 +12,7 @@ const router = express.Router();
 let users = [];
 
 /* /users is common routes for all enpoints */
-router.get("/", getUser);
+router.get("/", getUsers);
 
 router.post("/", createUser);
 
