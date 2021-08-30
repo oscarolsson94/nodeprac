@@ -8,10 +8,6 @@ const PORT = 5000;
 
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello from Homepage");
-});
-
 app.use("/users", usersRoutes); // set default path for all routes
 
 app.listen(PORT, () => {
