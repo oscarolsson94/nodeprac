@@ -1,13 +1,3 @@
-const sayHello = () => console.log("hello");
+var logger = require("./logger");
 
-/* sayHello(); */
-
-/* console.log(window); // cant reach document or window object in node */
-
-// Global functions in node:
-
-setTimeout();
-clearTimeout();
-
-setInterval();
-clearInterval();
+logger.log("message");
