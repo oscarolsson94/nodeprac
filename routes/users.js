@@ -9,8 +9,6 @@ import {
 
 const router = express.Router();
 
-let users = [];
-
 /* /users is common routes for all enpoints */
 router.get("/", getUsers);
 
