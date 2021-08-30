@@ -20,6 +20,10 @@ router.get("/", (req, res) => {
   res.send(users);
 });
 
-router.post("/", (req, res) => {});
+router.post("/", (req, res) => {
+  const user = req.body;
+
+  users.push(user);
+});
 
 export default router;
