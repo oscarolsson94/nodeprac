@@ -2,8 +2,8 @@ import express from "express";
 
 const router = express.Router();
 
+/* /users is common routes for all enpoints */
 router.get("/", (req, res) => {
-  /* /users is common routes for all enpoints */
   res.send("Hello");
 });
 
